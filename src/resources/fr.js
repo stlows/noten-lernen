@@ -67,5 +67,7 @@ export default {
   SCORE: "POINTS",
 
   record: "Record",
-  history: "Historique"
+  history: "Historique",
+
+  KEY: "Tonalité"
 };

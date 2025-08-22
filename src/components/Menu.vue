@@ -36,11 +36,18 @@
           v-model="options.difficulty"
         />
       </div>
-      <div class="setting">
+      <!-- <div class="setting">
         <SelectOption
           :label="$t('ACCIDENTALS')"
           :items="accidentalOptions"
           v-model="options.accidentals"
+        />
+      </div> -->
+      <div class="setting">
+        <SelectOption
+          :label="$t('KEY')"
+          :items="keysOptions"
+          v-model="options.key"
         />
       </div>
       <div class="setting">
@@ -87,7 +94,13 @@ import Statistics from "../model/Statistics";
 
 export default {
   name: "Menu",
-  components: { SelectOption, SelectOptionMulti, SelectOptionDropdown, LastResultDisplay, StatisticsGraph },
+  components: {
+    SelectOption,
+    SelectOptionMulti,
+    SelectOptionDropdown,
+    LastResultDisplay,
+    StatisticsGraph
+  },
   props: {
     lastResult: Object
   },
@@ -110,7 +123,7 @@ export default {
       return [
         { value: "button", label: this.$t("buttons") },
         { value: "keyboard", label: this.$t("piano") },
-        { value: "midi", label: 'MIDI' }
+        { value: "midi", label: "MIDI" }
       ];
     },
     clefOptions() {
@@ -120,6 +133,25 @@ export default {
         { value: "alto", label: this.$t("altoClef") },
         { value: "tenor", label: this.$t("tenorClef") },
         { value: "piano", label: this.$t("pianoClef") }
+      ];
+    },
+    keysOptions() {
+      return [
+        { value: "C", label: "C / Am" },
+        { value: "G", label: "G / Em" },
+        { value: "D", label: "D / Bm" },
+        { value: "A", label: "A / F#m" },
+        { value: "E", label: "E / C#m" },
+        { value: "B", label: "B / G#m" },
+        { value: "F#", label: "F# / D#m" },
+        { value: "C#", label: "C# / A#m" },
+        { value: "F", label: "F / Dm" },
+        { value: "Bb", label: "Bb / Gm" },
+        { value: "Eb", label: "Eb / Cm" },
+        { value: "Ab", label: "Ab / Fm" },
+        { value: "Db", label: "Db / Bbm" },
+        { value: "Gb", label: "Gb / Ebm" },
+        { value: "Cb", label: "Cb / Abm" }
       ];
     },
     difficultyOptions() {
@@ -157,7 +189,7 @@ export default {
         { value: "ln", label: "LN" },
         { value: "nl", label: "NL" },
         { value: "hu", label: "HU" },
-        { value: "ja", label: "JA" },
+        { value: "ja", label: "JA" }
       ];
     }
   },
@@ -181,13 +213,21 @@ export default {
       this.$emit("startGame");
     },
     updateGameType() {
-        Statistics.loadStatistics(Options.clef, Options.difficulty, Options.accidentals);
+      Statistics.loadStatistics(
+        Options.clef,
+        Options.difficulty,
+        Options.accidentals
+      );
     }
   },
   created() {
     Options.loadOptions();
     Statistics.init();
-    Statistics.loadStatistics(Options.clef, Options.difficulty, Options.accidentals);
+    Statistics.loadStatistics(
+      Options.clef,
+      Options.difficulty,
+      Options.accidentals
+    );
   }
 };
 </script>

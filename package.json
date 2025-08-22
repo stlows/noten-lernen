@@ -13,7 +13,7 @@
     "mobile": "npm run build && npm run copy && cd cordova && cordova run android"
   },
   "dependencies": {
-    "abcjs": "^5.3.5",
+    "abcjs": "^6.5.1",
     "chartist": "^0.11.0",
     "lockr": "^0.8.5",
     "lodash": "^4.17.11",

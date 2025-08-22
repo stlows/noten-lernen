@@ -6,6 +6,7 @@ export default {
   clef: ["treble"],
   difficulty: "easy",
   accidentals: "no",
+  key: "C",
   sound: false,
   vibration: true,
   displayNote: true,
@@ -20,9 +21,9 @@ export default {
     this.convertOldClefValues();
   },
   convertOldClefValues() {
-    if (this.clef === 'all') {
-      this.clef = ['treble', 'bass'];
-    } else if (this.clef === 'treble' || this.clef === 'bass') {
+    if (this.clef === "all") {
+      this.clef = ["treble", "bass"];
+    } else if (this.clef === "treble" || this.clef === "bass") {
       this.clef = [this.clef];
     }
   },
