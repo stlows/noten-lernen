@@ -36,13 +36,13 @@
           v-model="options.difficulty"
         />
       </div>
-      <!-- <div class="setting">
+      <div class="setting">
         <SelectOption
           :label="$t('ACCIDENTALS')"
           :items="accidentalOptions"
           v-model="options.accidentals"
         />
-      </div> -->
+      </div>
       <div class="setting">
         <SelectOption
           :label="$t('KEY')"
@@ -163,10 +163,10 @@ export default {
     },
     accidentalOptions() {
       return [
-        { value: "no", label: this.$t("none") },
-        { value: "onlySharp", label: this.$t("sharp") },
-        { value: "onlyFlat", label: this.$t("flat") },
-        { value: "sharpAndFlat", label: this.$t("sharpAndFlat") }
+        { value: "off", label: this.$t("off") },
+        { value: "some", label: this.$t("some") },
+        { value: "more", label: this.$t("more") },
+        { value: "always", label: this.$t("always") }
       ];
     },
     onOffOptions() {

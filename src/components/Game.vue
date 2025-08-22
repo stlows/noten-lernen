@@ -111,92 +111,144 @@ export default {
         score: this.score
       };
     },
-    minBassValue() {
+    bassValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return 36;
+          return [36, 38, 40, 41, 43, 45, 47];
         case "normal":
-          return 28;
+          return [28, 29, 31, 33, 35, 36, 38, 40, 41, 43, 45, 47];
         case "hard":
         default:
-          return 19;
+          return [
+            19,
+            21,
+            23,
+            24,
+            26,
+            28,
+            29,
+            31,
+            33,
+            35,
+            36,
+            38,
+            40,
+            41,
+            43,
+            45,
+            47,
+            48,
+            50,
+            52,
+            53,
+            55,
+            57
+          ];
       }
     },
-    maxBassValue() {
+    trebleValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return 48;
+          return [48, 50, 52, 53, 55, 57, 59, 60];
         case "normal":
-          return 48;
+          return [48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69];
         case "hard":
         default:
-          return 57;
+          return [
+            40,
+            41,
+            43,
+            45,
+            47,
+            48,
+            50,
+            52,
+            53,
+            55,
+            57,
+            59,
+            60,
+            62,
+            64,
+            65,
+            67,
+            69,
+            71,
+            72,
+            74,
+            76,
+            77
+          ];
       }
     },
-    minTrebleValue() {
+    altoValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return 48;
+          return [43, 45, 47, 48, 50, 52, 53, 55];
         case "normal":
-          return 48;
+          return [36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60];
         case "hard":
         default:
-          return 40;
+          return [
+            29,
+            31,
+            33,
+            35,
+            36,
+            38,
+            40,
+            41,
+            43,
+            45,
+            47,
+            48,
+            50,
+            52,
+            53,
+            55,
+            57,
+            59,
+            60,
+            62,
+            64,
+            65,
+            67
+          ];
       }
     },
-    maxTrebleValue() {
+    tenorValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return 60;
+          return [43, 45, 47, 48, 50, 52, 53, 55];
         case "normal":
-          return 69;
+          return [36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60];
         case "hard":
         default:
-          return 77;
-      }
-    },
-    minAltoValue() {
-      switch (this.options.difficulty) {
-        case "easy":
-          return 43;
-        case "normal":
-          return 36;
-        case "hard":
-        default:
-          return 29;
-      }
-    },
-    maxAltoValue() {
-      switch (this.options.difficulty) {
-        case "easy":
-          return 55;
-        case "normal":
-          return 60;
-        case "hard":
-        default:
-          return 67;
-      }
-    },
-    minTenorValue() {
-      switch (this.options.difficulty) {
-        case "easy":
-          return 43;
-        case "normal":
-          return 36;
-        case "hard":
-        default:
-          return 26;
-      }
-    },
-    maxTenorValue() {
-      switch (this.options.difficulty) {
-        case "easy":
-          return 55;
-        case "normal":
-          return 60;
-        case "hard":
-        default:
-          return 64;
+          return [
+            26,
+            28,
+            29,
+            31,
+            33,
+            35,
+            36,
+            38,
+            40,
+            41,
+            43,
+            45,
+            47,
+            48,
+            50,
+            52,
+            53,
+            55,
+            57,
+            59,
+            60,
+            62,
+            64
+          ];
       }
     }
   },
@@ -251,52 +303,93 @@ export default {
       } else {
         var staff = clef;
       }
-      const exercise = { clef, staff, value: this.getRandomNoteForClef(clef) };
-      switch (this.options.accidentals) {
-        case "no":
-          exercise.isSharp = false;
-          if (Utils.hasAccidental(exercise.value)) {
-            _.sample([true, false]) ? exercise.value++ : exercise.value--;
-          }
-          break;
-        case "onlySharp":
-          exercise.isSharp = true;
-          break;
-        case "onlyFlat":
-          exercise.isSharp = false;
-          break;
-        case "sharpAndFlat":
-          exercise.isSharp = _.sample([true, false]);
-          break;
-      }
-      console.log(exercise.value);
-      if (
-        Utils.accidentalsByKey(this.options.key).sharps.includes(
-          exercise.value % 12
-        )
-      ) {
+      const exercise = {
+        clef,
+        staff,
+        natural: this.getRandomNoteForClef(clef),
+        accidental: ""
+      };
+      exercise.value = exercise.natural;
+      const accidentalsInKey = Utils.accidentalsByKey(this.options.key);
+
+      console.log("Natural note selected: ", exercise.natural % 12);
+      if (accidentalsInKey.sharps.includes(exercise.value % 12)) {
         exercise.value++;
-      }
-      if (
-        Utils.accidentalsByKey(this.options.key).flats.includes(
+        exercise.isSharp = true;
+        console.log(
+          "This note is sharp in this key so raising the value to: ",
           exercise.value % 12
-        )
-      ) {
-        exercise.value--;
+        );
       }
-      console.log(exercise, Utils.accidentalsByKey(this.options.key));
+      if (accidentalsInKey.flats.includes(exercise.natural % 12)) {
+        exercise.value--;
+        exercise.isSharp = false;
+        console.log(
+          "This note is flat in this key so falttening the value to: ",
+          exercise.value % 12
+        );
+      }
+
+      if (this.options.accidentals !== "off") {
+        let accidental = "";
+        switch (this.options.accidentals) {
+          case "some":
+            accidental = _.sample(["sharpen", "flatten", "", "", "", "", ""]);
+          case "more":
+            accidental = _.sample(["sharpen", "flatten", "", ""]);
+          case "always":
+            accidental = _.sample(["sharpen", "flatten"]);
+        }
+
+        if (accidental === "sharpen") {
+          exercise.value++;
+          exercise.accidental = "^";
+          console.log(
+            "Sharpening the note, new value to guess is",
+            exercise.value % 12
+          );
+          if (accidentalsInKey.sharps.includes(exercise.natural % 12)) {
+            console.log("This note is already sharp, make it double sharp!");
+            exercise.accidental = "^^";
+          }
+          if (accidentalsInKey.flats.includes(exercise.natural % 12)) {
+            console.log("This note is already flat, make it natural !");
+            exercise.accidental = "=";
+          }
+        }
+
+        if (accidental === "flatten") {
+          exercise.value--;
+          exercise.accidental = "_";
+          console.log(
+            "Flattening the note, new value to guess is",
+            exercise.value % 12
+          );
+          if (accidentalsInKey.sharps.includes(exercise.natural % 12)) {
+            console.log("This note is already sharp, make it natural !");
+            exercise.accidental = "=";
+          }
+          if (accidentalsInKey.flats.includes(exercise.natural % 12)) {
+            console.log("This note is already sharp, make it double flat!");
+            exercise.accidental = "__";
+          }
+        }
+      }
+
+      //console.log(exercise.value);
+      //console.log(exercise, Utils.accidentalsByKey(this.options.key));
       return exercise;
     },
     getRandomNoteForClef(clef) {
       switch (clef) {
         case "treble":
-          return _.random(this.minTrebleValue, this.maxTrebleValue);
+          return _.sample(this.trebleValues);
         case "bass":
-          return _.random(this.minBassValue, this.maxBassValue);
+          return _.sample(this.bassValues);
         case "alto":
-          return _.random(this.minAltoValue, this.maxAltoValue);
+          return _.sample(this.altoValues);
         case "tenor":
-          return _.random(this.minTenorValue, this.maxTenorValue);
+          return _.sample(this.tenorValues);
       }
     },
     checkAnswer(value, checkOctave = false) {

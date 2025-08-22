@@ -21,15 +21,11 @@ export default {
   },
   computed: {
     accidental() {
-      // if (!Utils.hasAccidental(this.currentExercise.value)) {
-      //   return "";
-      // }
-      // return this.currentExercise.isSharp ? "^" : "_";
-      return "";
+      return this.currentExercise.accidental;
     },
     noteLetter() {
       return Utils.notesByKey(this.options.key)[
-        this.currentExercise.value % 12
+        this.currentExercise.natural % 12
       ];
     },
     note() {
