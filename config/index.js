@@ -42,9 +42,9 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, "../docs"),
     assetsSubDirectory: "static",
-    assetsPublicPath: "/noten-learnen/",
+    assetsPublicPath: "/noten-lernen/",
 
-    publicPath: "/noten-learnen/",
+    publicPath: "/noten-lernen/",
     /**
      * Source Maps
      */
