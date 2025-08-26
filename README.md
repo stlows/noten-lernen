@@ -4,7 +4,9 @@ Learn to read sheet music.
 
 Fork from Open-source github to add:
 - Key signature option
-- Every note has the same probability to appear (Previous version had skewed distribution: C,E,F, B = 3/24 and D, G A = 4/24)
+- Every note has the same probability to appear. Original version has a skewed distribution due to being surrounded by 2 black keys.
+  - C, E, F and B = 3/24
+  - D, G and A = 4/24
 - Accidentals is working with signature
   - Sharpen a sharp note = double sharp
   - Flatten a sharp note = natural
