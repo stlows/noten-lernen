@@ -113,6 +113,8 @@ export default {
     },
     bassValues() {
       switch (this.options.difficulty) {
+        case "custom":
+          return Utils.notesSample(this.options.customDifficultyBassMin || 28, this.options.customDifficultyBassMax || 47)
         case "easy":
           return Utils.notesSample(36, 47)
         case "normal":
@@ -124,6 +126,8 @@ export default {
     },
     trebleValues() {
       switch (this.options.difficulty) {
+        case "custom":
+          return Utils.notesSample(this.options.customDifficultyTrebleMin || 48, this.options.customDifficultyTrebleMax || 69)
         case "easy":
           return Utils.notesSample(48, 60)
         case "normal":
@@ -135,6 +139,8 @@ export default {
     },
     altoValues() {
       switch (this.options.difficulty) {
+         case "custom":
+        return Utils.notesSample(this.options.customDifficultyAltoMin || 36, this.options.customDifficultyAltoMax || 60)
         case "easy":
           return Utils.notesSample(43, 55)
         case "normal":
@@ -146,6 +152,8 @@ export default {
     },
     tenorValues() {
       switch (this.options.difficulty) {
+         case "custom":
+          return Utils.notesSample(this.options.customDifficultyTenorMin || 36, this.options.customDifficultyTenorMax || 60)
         case "easy":
           return Utils.notesSample(43, 55)
         case "normal":

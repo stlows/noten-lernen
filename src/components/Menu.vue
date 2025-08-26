@@ -36,6 +36,73 @@
           v-model="options.difficulty"
         />
       </div>
+
+      <template v-if="options.difficulty === 'custom'">
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_BASS_MIN')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyBassMin"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_BASS_MAX')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyBassMax"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_TREBLE_MIN')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyTrebleMin"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_TREBLE_MAX')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyTrebleMax"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_ALTO_MIN')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyAltoMin"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_ALTO_MAX')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyAltoMax"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_TENOR_MIN')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyTenorMin"
+          />
+        </div>
+
+        <div class="setting">
+          <SelectOptionDropdown
+            :label="$t('CUSTOM_DIFFICULTY_TENOR_MAX')"
+            :items="customDifficultyOptions"
+            v-model="options.customDifficultyTenorMax"
+          />
+        </div>
+      </template>
+
       <div class="setting">
         <SelectOption
           :label="$t('ACCIDENTALS')"
@@ -90,6 +157,7 @@ import LastResultDisplay from "./LastResultDisplay";
 import StatisticsGraph from "./StatisticsGraph";
 
 import Options from "../model/Options";
+import Utils from "../model/Utils";
 import Statistics from "../model/Statistics";
 
 export default {
@@ -158,8 +226,16 @@ export default {
       return [
         { value: "easy", label: this.$t("easy") },
         { value: "normal", label: this.$t("normal") },
-        { value: "hard", label: this.$t("hard") }
+        { value: "hard", label: this.$t("hard") },
+        { value: "custom", label: this.$t("custom") },
       ];
+    },
+    customDifficultyOptions(){
+      let notes = "C_D_EF_G_A_B"
+      let midiToLabel = (midi) => {
+        return `${notes[midi % 12]}${Math.floor(midi / 12)} (${x})`
+      }
+      return Utils.midiPianoNotes.map(x => { return { value: x, label: midiToLabel(x)} })
     },
     accidentalOptions() {
       return [
