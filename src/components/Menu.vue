@@ -233,7 +233,7 @@ export default {
     customDifficultyOptions(){
       let notes = "C_D_EF_G_A_B"
       let midiToLabel = (midi) => {
-        return `${notes[midi % 12]}${Math.floor(midi / 12)} (${x})`
+        return `${notes[midi % 12]}${Math.floor(midi / 12)} (${midi})`
       }
       return Utils.midiPianoNotes.map(x => { return { value: x, label: midiToLabel(x)} })
     },
