@@ -77,12 +77,12 @@ export default {
 
   custom: "Personnalisé",
 
-  customDifficultyBassMin: "Clé de Fa min",
-  customDifficultyBassMax: "Clé de Fa max",
-  customDifficultyTrebleMin: "Clé de Sol min",
-  customDifficultyTrebleMax: "Clé de Sol max",
-  customDifficultyAltoMin: "Alto min",
-  customDifficultyAltoMax: "Alto max",
-  customDifficultyTenorMin: "Ténor min",
-  customDifficultyTenorMax: "Ténor max",
+  CUSTOM_DIFFICULTY_BASS_MIN: "Clé de Fa min",
+  CUSTOM_DIFFICULTY_BASS_MAX: "Clé de Fa max",
+  CUSTOM_DIFFICULTY_TREBLE_MIN: "Clé de Sol min",
+  CUSTOM_DIFFICULTY_TREBLE_MAX: "Clé de Sol max",
+  CUSTOM_DIFFICULTY_ALTO_MIN: "Alto min",
+  CUSTOM_DIFFICULTY_ALTO_MAX: "Alto max",
+  CUSTOM_DIFFICULTY_TENOR_MIN: "Ténor min",
+  CUSTOM_DIFFICULTY_TENOR_MAX: "Ténor max",
 };

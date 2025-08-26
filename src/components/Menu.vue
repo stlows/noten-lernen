@@ -1,149 +1,95 @@
 <template>
   <div class="menu">
     <div class="start-container">
-      <button class="start" @click="startGame">{{$t('START')}}</button>
+      <button class="start" @click="startGame">{{ $t('START') }}</button>
     </div>
-    <LastResultDisplay v-if="lastResult" :lastResult="lastResult"/>
-    <StatisticsGraph v-if="statistics.lastScores.length >= 2"/>
+    <LastResultDisplay v-if="lastResult" :lastResult="lastResult" />
+    <StatisticsGraph v-if="statistics.lastScores.length >= 2" />
     <div class="settings">
-      <h3>{{$t('settings')}}</h3>
+      <h3>{{ $t('settings') }}</h3>
       <div class="setting">
-        <SelectOption
-          :label="$t('ROUND_LENGTH')"
-          :items="gameLengthOptions"
-          v-model="options.gameLength"
-        />
+        <SelectOption :label="$t('ROUND_LENGTH')" :items="gameLengthOptions" v-model="options.gameLength" />
       </div>
       <div class="setting">
-        <SelectOption
-          :label="$t('NOTE_INPUT')"
-          :items="inputModeOptions"
-          v-model="options.inputMode"
-        />
+        <SelectOption :label="$t('NOTE_INPUT')" :items="inputModeOptions" v-model="options.inputMode" />
       </div>
       <div class="setting">
-        <SelectOptionMulti 
-          :label="$t('CLEF')"
-          :items="clefOptions"
-          v-bind:value="options.clef"
-          v-on:input="options.clef = $event.sort()"
-        />
+        <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-bind:value="options.clef"
+          v-on:input="options.clef = $event.sort()" />
       </div>
       <div class="setting">
-        <SelectOption
-          :label="$t('DIFFICULTY')"
-          :items="difficultyOptions"
-          v-model="options.difficulty"
-        />
+        <SelectOption :label="$t('DIFFICULTY')" :items="difficultyOptions" v-model="options.difficulty" />
       </div>
 
       <template v-if="options.difficulty === 'custom'">
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_BASS_MIN')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyBassMin"
-          />
+
+        <div class="setting-group">
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_BASS_MIN')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyBassMin" />
+          </div>
+
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_BASS_MAX')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyBassMax" />
+          </div>
         </div>
 
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_BASS_MAX')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyBassMax"
-          />
+        <div class="setting-group">
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_TREBLE_MIN')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyTrebleMin" />
+          </div>
+
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_TREBLE_MAX')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyTrebleMax" />
+          </div>
         </div>
 
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_TREBLE_MIN')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyTrebleMin"
-          />
+        <div class="setting-group">
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_ALTO_MIN')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyAltoMin" />
+          </div>
+
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_ALTO_MAX')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyAltoMax" />
+          </div>
         </div>
 
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_TREBLE_MAX')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyTrebleMax"
-          />
+        <div class="setting-group">
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_TENOR_MIN')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyTenorMin" />
+          </div>
+
+          <div class="setting">
+            <SelectOptionDropdown :label="$t('CUSTOM_DIFFICULTY_TENOR_MAX')" :items="customDifficultyOptions"
+              v-model="options.customDifficultyTenorMax" />
+          </div>
         </div>
 
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_ALTO_MIN')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyAltoMin"
-          />
-        </div>
-
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_ALTO_MAX')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyAltoMax"
-          />
-        </div>
-
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_TENOR_MIN')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyTenorMin"
-          />
-        </div>
-
-        <div class="setting">
-          <SelectOptionDropdown
-            :label="$t('CUSTOM_DIFFICULTY_TENOR_MAX')"
-            :items="customDifficultyOptions"
-            v-model="options.customDifficultyTenorMax"
-          />
-        </div>
       </template>
 
       <div class="setting">
-        <SelectOption
-          :label="$t('ACCIDENTALS')"
-          :items="accidentalOptions"
-          v-model="options.accidentals"
-        />
+        <SelectOption :label="$t('ACCIDENTALS')" :items="accidentalOptions" v-model="options.accidentals" />
       </div>
       <div class="setting">
-        <SelectOptionDropdown
-          :label="$t('KEY')"
-          :items="keysOptions"
-          v-model="options.key"
-        />
+        <SelectOptionDropdown :label="$t('KEY')" :items="keysOptions" v-model="options.key" />
       </div>
       <div class="setting">
-        <SelectOption 
-          :label="$t('SOUND')"
-          :items="onOffOptions" 
-          v-model="options.sound"
-        />
+        <SelectOption :label="$t('SOUND')" :items="onOffOptions" v-model="options.sound" />
       </div>
       <div class="setting">
-        <SelectOption 
-          :label="$t('VIBRATION')"
-          :items="onOffOptions" 
-          v-model="options.vibration"
-        />
+        <SelectOption :label="$t('VIBRATION')" :items="onOffOptions" v-model="options.vibration" />
       </div>
       <div class="setting">
-        <SelectOption 
-          :label="$t('DISPLAYCORRECTNOTE')"
-          :items="onOffOptions" 
-          v-model="options.displayNote"
-        />
+        <SelectOption :label="$t('DISPLAYCORRECTNOTE')" :items="onOffOptions" v-model="options.displayNote" />
       </div>
       <div class="setting">
-        <SelectOptionDropdown
-          :label="$t('LANGUAGE')"
-          :items="languageOptions"
-          v-model="options.language"
-        />
+        <SelectOptionDropdown :label="$t('LANGUAGE')" :items="languageOptions" v-model="options.language" />
       </div>
     </div>
   </div>
@@ -230,12 +176,12 @@ export default {
         { value: "custom", label: this.$t("custom") },
       ];
     },
-    customDifficultyOptions(){
+    customDifficultyOptions() {
       let notes = "C_D_EF_G_A_B"
       let midiToLabel = (midi) => {
         return `${notes[midi % 12]}${Math.floor(midi / 12)} (${midi})`
       }
-      return Utils.midiPianoNotes.map(x => { return { value: x, label: midiToLabel(x)} })
+      return Utils.midiPianoNotes.map(x => { return { value: x, label: midiToLabel(x) } })
     },
     accidentalOptions() {
       return [
@@ -270,16 +216,16 @@ export default {
     }
   },
   watch: {
-    "options.language": function(lang) {
+    "options.language": function (lang) {
       this.$i18n.locale = lang;
     },
-    "options.clef": function() {
+    "options.clef": function () {
       this.updateGameType();
     },
-    "options.difficulty": function() {
+    "options.difficulty": function () {
       this.updateGameType();
     },
-    "options.accidentals": function() {
+    "options.accidentals": function () {
       this.updateGameType();
     }
   },
@@ -341,6 +287,10 @@ button.start:hover {
 
 button.start:active {
   background-color: yellow;
+}
+
+.setting-group {
+  display: flex
 }
 
 .setting {

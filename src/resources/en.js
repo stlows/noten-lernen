@@ -81,12 +81,12 @@ export default {
 
   custom: "Custom",
 
-  customDifficultyBassMin: "Bass clef min",
-  customDifficultyBassMax: "Bass clef max",
-  customDifficultyTrebleMin: "Treble clef min",
-  customDifficultyTrebleMax: "Treble clef max",
-  customDifficultyAltoMin: "Alto min",
-  customDifficultyAltoMax: "Alto max",
-  customDifficultyTenorMin: "Tenor min",
-  customDifficultyTenorMax: "Tenor max",
+  CUSTOM_DIFFICULTY_BASS_MIN: "Bass clef min",
+  CUSTOM_DIFFICULTY_BASS_MAX: "Bass clef max",
+  CUSTOM_DIFFICULTY_TREBLE_MIN: "Treble clef min",
+  CUSTOM_DIFFICULTY_TREBLE_MAX: "Treble clef max",
+  CUSTOM_DIFFICULTY_ALTO_MIN: "Alto min",
+  CUSTOM_DIFFICULTY_ALTO_MAX: "Alto max",
+  CUSTOM_DIFFICULTY_TENOR_MIN: "Tenor min",
+  CUSTOM_DIFFICULTY_TENOR_MAX: "Tenor max",
 };
