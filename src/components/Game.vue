@@ -334,7 +334,7 @@ export default {
         let accidental = "";
         switch (this.options.accidentals) {
           case "some":
-            accidental = _.sample(["sharpen", "flatten", "", "", "", "", ""]);
+            accidental = _.sample(["sharpen", "flatten", "", "", "", "", "", ""]);
           case "more":
             accidental = _.sample(["sharpen", "flatten", "", ""]);
           case "always":

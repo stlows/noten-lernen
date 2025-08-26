@@ -66,8 +66,8 @@ export default {
   ACCURACY: "PRÉCISION",
   SCORE: "POINTS",
 
-  some: "Un peu",
-  more: "Plus",
+  some: "Un peu (1 sur 4)",
+  more: "Plus (1 sur 2)",
   always: "Toujours",
 
   record: "Record",
