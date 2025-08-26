@@ -2,21 +2,19 @@
 
 Learn to read sheet music.
 
-<a href="https://play.google.com/store/apps/details?id=de.melvil.noten">
-  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" title="Get it on Google Play" width="200">
-</a>
-
-<a href="https://apt.izzysoft.de/fdroid/index/apk/de.melvil.noten">
-  <img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" title="Get it on IzzyOnDroid" width="200">
-</a>
-
+Fork from Open-source github to add:
+- Key signature option
+- Every note has the same probability to appear (Previous version had skewed distribution: C,E,F, B = 3/24 and D, G A = 4/24)
+- Accidentals is working with signature
+  - Sharpen a sharp note = double sharp
+  - Flatten a sharp note = natural
+  - Sharpen a flat note = natural
+  - Flatten a flat note = double flat
 
 
 ## Demo
 
-You can see the current status of the app on Netlify:
-* [prod](https://noten-lernen.netlify.com/)
-* [dev](https://dev--noten-lernen.netlify.com/)
+https://vbeaulieu.com/noten-lernen
 
 ## Screenshots
 
