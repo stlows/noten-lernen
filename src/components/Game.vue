@@ -77,7 +77,7 @@ export default {
       timer: null,
       feedbackNote: "none",
       feedback: "none",
-      sample: null
+      sample: null,
     };
   },
   computed: {
@@ -114,141 +114,45 @@ export default {
     bassValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return [36, 38, 40, 41, 43, 45, 47];
+          return Utils.notesSample(36, 47)
         case "normal":
-          return [28, 29, 31, 33, 35, 36, 38, 40, 41, 43, 45, 47];
+          return Utils.notesSample(28, 47)
         case "hard":
         default:
-          return [
-            19,
-            21,
-            23,
-            24,
-            26,
-            28,
-            29,
-            31,
-            33,
-            35,
-            36,
-            38,
-            40,
-            41,
-            43,
-            45,
-            47,
-            48,
-            50,
-            52,
-            53,
-            55,
-            57
-          ];
+          return Utils.notesSample(19,57)
       }
     },
     trebleValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return [48, 50, 52, 53, 55, 57, 59, 60];
+          return Utils.notesSample(48, 60)
         case "normal":
-          return [48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69];
+          return Utils.notesSample(48, 69)
         case "hard":
         default:
-          return [
-            40,
-            41,
-            43,
-            45,
-            47,
-            48,
-            50,
-            52,
-            53,
-            55,
-            57,
-            59,
-            60,
-            62,
-            64,
-            65,
-            67,
-            69,
-            71,
-            72,
-            74,
-            76,
-            77
-          ];
+          return Utils.notesSample(40, 77)
       }
     },
     altoValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return [43, 45, 47, 48, 50, 52, 53, 55];
+          return Utils.notesSample(43, 55)
         case "normal":
-          return [36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60];
+          return Utils.notesSample(36, 60)
         case "hard":
         default:
-          return [
-            29,
-            31,
-            33,
-            35,
-            36,
-            38,
-            40,
-            41,
-            43,
-            45,
-            47,
-            48,
-            50,
-            52,
-            53,
-            55,
-            57,
-            59,
-            60,
-            62,
-            64,
-            65,
-            67
-          ];
+          return Utils.notesSample(29, 67)
       }
     },
     tenorValues() {
       switch (this.options.difficulty) {
         case "easy":
-          return [43, 45, 47, 48, 50, 52, 53, 55];
+          return Utils.notesSample(43, 55)
         case "normal":
-          return [36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60];
+          return Utils.notesSample(36, 60)
         case "hard":
         default:
-          return [
-            26,
-            28,
-            29,
-            31,
-            33,
-            35,
-            36,
-            38,
-            40,
-            41,
-            43,
-            45,
-            47,
-            48,
-            50,
-            52,
-            53,
-            55,
-            57,
-            59,
-            60,
-            62,
-            64
-          ];
+          return Utils.notesSample(26, 64)
       }
     }
   },

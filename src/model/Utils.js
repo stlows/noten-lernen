@@ -90,6 +90,12 @@ export default {
     }
   },
 
+  midiPianoNotes: [19, 21, 23, 24, 26, 28, 29, 31, 33, 35, 36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77],
+
+  notesSample(start, end) {
+    return this.midiPianoNotes.filter(n => n >= start && n <= end);
+  },
+
   notesByKey(key) {
     switch (key) {
       case "C":
