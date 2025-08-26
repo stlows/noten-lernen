@@ -44,7 +44,7 @@
         />
       </div>
       <div class="setting">
-        <SelectOption
+        <SelectOptionDropdown
           :label="$t('KEY')"
           :items="keysOptions"
           v-model="options.key"
