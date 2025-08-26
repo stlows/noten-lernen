@@ -65,13 +65,24 @@ export default {
   CORRECT: "JUSTES",
   ACCURACY: "PRÉCISION",
   SCORE: "POINTS",
+  
+  record: "Record",
+  history: "Historique",
 
   some: "Un peu (1 sur 4)",
   more: "Plus (1 sur 2)",
   always: "Toujours",
 
-  record: "Record",
-  history: "Historique",
+  KEY: "Tonalité",
 
-  KEY: "Tonalité"
+  custom: "Personnalisé",
+
+  customDifficultyBassMin: "Clé de Fa min",
+  customDifficultyBassMax: "Clé de Fa max",
+  customDifficultyTrebleMin: "Clé de Sol min",
+  customDifficultyTrebleMax: "Clé de Sol max",
+  customDifficultyAltoMin: "Alto min",
+  customDifficultyAltoMax: "Alto max",
+  customDifficultyTenorMin: "Ténor min",
+  customDifficultyTenorMax: "Ténor max",
 };

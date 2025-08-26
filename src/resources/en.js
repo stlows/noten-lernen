@@ -72,4 +72,21 @@ export default {
   noDeviceFound: "No device found. Please reconnect the MIDI device.",
   playTheNote: "Play the note on your MIDI keyboard.",
   lastNotePlayed: "Last note played",
+
+  some: "Some (1 of 4)",
+  more: "More (1 of 2)",
+  always: "Always",
+
+  KEY: "Key",
+
+  custom: "Custom",
+
+  customDifficultyBassMin: "Bass clef min",
+  customDifficultyBassMax: "Bass clef max",
+  customDifficultyTrebleMin: "Treble clef min",
+  customDifficultyTrebleMax: "Treble clef max",
+  customDifficultyAltoMin: "Alto min",
+  customDifficultyAltoMax: "Alto max",
+  customDifficultyTenorMin: "Tenor min",
+  customDifficultyTenorMax: "Tenor max",
 };

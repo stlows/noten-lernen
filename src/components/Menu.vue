@@ -254,18 +254,18 @@ export default {
     languageOptions() {
       return [
         { value: "en", label: "EN" },
-        { value: "de", label: "DE" },
-        { value: "es", label: "ES" },
+        //{ value: "de", label: "DE" },
+        //{ value: "es", label: "ES" },
         { value: "fr", label: "FR" },
-        { value: "it", label: "IT" },
-        { value: "el", label: "EL" },
-        { value: "pl", label: "PL" },
-        { value: "pt", label: "PT" },
-        { value: "cz", label: "CZ" },
-        { value: "ln", label: "LN" },
-        { value: "nl", label: "NL" },
-        { value: "hu", label: "HU" },
-        { value: "ja", label: "JA" }
+        //{ value: "it", label: "IT" },
+        //{ value: "el", label: "EL" },
+        //{ value: "pl", label: "PL" },
+        //{ value: "pt", label: "PT" },
+        //{ value: "cz", label: "CZ" },
+        //{ value: "ln", label: "LN" },
+        //{ value: "nl", label: "NL" },
+        //{ value: "hu", label: "HU" },
+        //{ value: "ja", label: "JA" }
       ];
     }
   },
