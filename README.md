@@ -4,6 +4,8 @@
 
 https://vbeaulieu.com/noten-lernen
 
+but prefer using https://vbeaulieu.com/music-theory-trainer (Settings → Practice staff sight-reading)
+
 ## Modifications
 
 This fork adds/modify the original version likeso
